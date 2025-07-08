@@ -97,5 +97,10 @@ Then open: http://localhost:8501
 
 ---
 
+## 📜 License
+MIT License. Use freely for academic or commercial projects.
+
+---
+
 ## 🙌 Credits
 Created by joelpaulp as part of an AI developer assignment.
