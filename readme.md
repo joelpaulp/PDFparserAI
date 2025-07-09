@@ -16,8 +16,7 @@ This project is an AI-powered PDF assistant that:
 
 - 🧠 **LLM-Based PDF Labeling**: Uses `mistralai/mistral-small-3.2-24b-instruct:free` from OpenRouter to label PDF content into markdown sections (titles, subtitles, paragraphs)
 - 📚 **RAG (Retrieval-Augmented Generation)**: Splits labeled content into chunks, creates embeddings, and retrieves only relevant parts for answering
-- 💬 **Chat with PDF**: Maintains context through chat history
-- 📎 **Handles Large PDFs**: Efficient with 500+ page documents thanks to FAISS vector search
+- 💬 **Chat with PDF**: Tries to Maintains context through chat history.
 - 🧱 **Structure-Aware Chunking**: Keeps headings with content to improve LLM understanding
 
 ---
