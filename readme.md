@@ -36,8 +36,7 @@ This project is an AI-powered PDF assistant that:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/pdf-rag-assistant.git
-cd pdf-rag-assistant
+git clone https://https://github.com/joelpaulp/PDFparserAI/
 ```
 
 ### 2. Create and activate virtual environment
