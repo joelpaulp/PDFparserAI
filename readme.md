@@ -56,7 +56,7 @@ touch .env
 ```
 Add this to your `.env` file:
 ```
-OPENROUTER_API_KEY=sk-xxxxxxxxxxxxxxxxxx
+OPENROUTER_API_KEY="replace this with your API Key without quoutes or whitespaces after equal sign"
 ```
 > Get your key from [https://openrouter.ai](https://openrouter.ai)
 
