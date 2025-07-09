@@ -2,17 +2,19 @@
 
 This project is an AI-powered PDF assistant that:
 
-✅ Extracts and labels structured content from any PDF using LLMs (Gemma 3)
+✅ Extracts and labels structured content from any PDF using LLMs (Mistral 3.2B)
 
 ✅ Allows you to query the PDF using natural language
 
 ✅ Uses RAG (Retrieval-Augmented Generation) to handle large PDFs by breaking them into semantic chunks and retrieving only relevant parts
 
+🎥 [Watch Demo Video](https://youtu.be/9J9taSUDIUo)
+
 ---
 
 ## 🚀 Features
 
-- 🧠 **LLM-Based PDF Labeling**: Uses `google/gemma-3n-e4b-it:free` from OpenRouter to label PDF content into markdown sections (titles, subtitles, paragraphs)
+- 🧠 **LLM-Based PDF Labeling**: Uses `mistralai/mistral-small-3.2-24b-instruct:free` from OpenRouter to label PDF content into markdown sections (titles, subtitles, paragraphs)
 - 📚 **RAG (Retrieval-Augmented Generation)**: Splits labeled content into chunks, creates embeddings, and retrieves only relevant parts for answering
 - 💬 **Chat with PDF**: Maintains context through chat history
 - 📎 **Handles Large PDFs**: Efficient with 500+ page documents thanks to FAISS vector search
@@ -23,12 +25,13 @@ This project is an AI-powered PDF assistant that:
 ## 🧰 Tech Stack
 
 - [Streamlit](https://streamlit.io/) - UI
-- [OpenRouter](https://openrouter.ai/) - LLM API (Gemma)
+- [OpenRouter](https://openrouter.ai/) - LLM API (Mistral)
 - [SentenceTransformers](https://www.sbert.net/) - Embeddings
 - [FAISS](https://github.com/facebookresearch/faiss) - Vector search index
 - [pdfplumber](https://github.com/jsvine/pdfplumber) - PDF text extraction
 
 ---
+
 
 ## 📦 Setup
 
@@ -94,11 +97,6 @@ Then open: http://localhost:8501
 ## 🔒 Security Notes
 - Your `.env` contains your API key. **Do not commit it**.
 - You can add `.env` to `.gitignore`
-
----
-
-## 📜 License
-MIT License. Use freely for academic or commercial projects.
 
 ---
 
