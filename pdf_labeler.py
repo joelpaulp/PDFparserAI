@@ -1,6 +1,6 @@
 # pdf_labeler.py
 
-from llm_openrouter import query_gemma
+from llm_openrouter import query_mistral
 import json
 import re
 
@@ -30,5 +30,5 @@ Content:
 
 def label_pdf_content_markdown(text: str) -> str:
     prompt = create_markdown_prompt(text)
-    response = query_gemma(prompt)
+    response = query_mistral(prompt)
     return response.strip()

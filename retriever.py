@@ -37,6 +37,8 @@ def extract_headings(markdown_text):
     return [line.strip() for line in markdown_text.splitlines() if line.strip().startswith(("#", "##", "###"))]
 
 def build_faiss_index(text_list):
+    if not text_list:
+        raise ValueError("Tried to bild FAISS index with empty list")
     embeddings = model.encode(text_list)
     index = faiss.IndexFlatL2(embeddings.shape[1])
     index.add(np.array(embeddings).astype('float32'))

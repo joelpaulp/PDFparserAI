@@ -12,10 +12,10 @@ headers = {
     "Content-Type": "application/json"
 }
 
-def query_gemma(prompt: str, max_tokens=500) -> str:
+def query_mistral(prompt: str, max_tokens=3000) -> str:
     try:
         data = {
-            "model": "google/gemma-3n-e4b-it:free",
+            "model": "mistralai/mistral-small-3.2-24b-instruct:free",
             "messages": [
                 {"role": "user", "content": prompt}
             ],

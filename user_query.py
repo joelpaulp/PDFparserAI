@@ -18,15 +18,23 @@ def init_retrieval(markdown_text):
     global global_index, global_chunks, global_heading_index, global_headings, global_markdown_text
     global_markdown_text = markdown_text
 
+    # Chunk full document and index
     chunks = split_markdown_into_chunks(markdown_text)
+    if not chunks:
+        raise ValueError("No chunks generated from markdown. Cannot build index.")
     index, _, chunks = build_faiss_index(chunks)
     global_index = index
     global_chunks = chunks
 
+    # Extract headings and index only if found
     headings = extract_headings(markdown_text)
-    heading_index, _, headings = build_faiss_index(headings)
-    global_heading_index = heading_index
-    global_headings = headings
+    if headings:
+        heading_index, _, headings = build_faiss_index(headings)
+        global_heading_index = heading_index
+        global_headings = headings
+    else:
+        global_heading_index = None
+        global_headings = []
 
 def retrieve_relevant_chunks(query, top_k=TOP_K):
     if global_index is None:
@@ -70,12 +78,14 @@ def answer_query_with_rag(user_question: str, chat_history: list) -> tuple:
     prompt = rag_prompt_with_history(user_question, relevant_chunks, chat_history)
 
     api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        return "❌ API key not found. Please set OPENROUTER_API_KEY in your .env file.", chat_history
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
     data = {
-        "model": "google/gemma-3n-e4b-it:free",
+        "model": "mistralai/mistral-small-3.2-24b-instruct:free",
         "prompt": prompt,
         "temperature": 0.7,
-        "max_tokens": 1024
+        "max_tokens": 3000
     }
 
     for attempt in range(1, MAX_RETRIES + 1):
